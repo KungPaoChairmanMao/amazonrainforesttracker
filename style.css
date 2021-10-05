@@ -1,0 +1,12 @@
+.maintxt {
+    background-image: "https://cdn.discordapp.com/attachments/882770342312046592/894264285260304414/8hTugj9.gif";
+    background-size: cover;
+}
+button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
