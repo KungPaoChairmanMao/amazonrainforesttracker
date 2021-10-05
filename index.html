@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Amazon Rainforest Tracker</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
+
+	</script>
+</head>
+
+<body>
+
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#myPage">Amazon Rainforest Tracker</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#tracker">Tracker</a></li>
+        <li><a href="#donate">Donate</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="d-flex justify-content-center">
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron text-center" id="myPage">
+  <div class="maintxt">
+  <h1>Amazon Rainforest Tracker</h1> 
+  <p>How is the rainforest doing?</p> 
+  <div class="container">
+    <h1 class="bignumber" id="stat1" style="font-family: Courier;"></h1>
+    <h3 class="text-center">acres have been destroyed since the start of 2020.</h3>
+  </div>
+  </div>
+</div>
+
+<div id="tracker" class="container">
+    <div class="row">
+    <div class="col-1">
+      <canvas id="myChart" height="100"></canvas>
+    </div>
+    <div class="col-1">
+      <canvas id="myChart2" height="100"></canvas> 
+    </div>
+    <div class="col-1">
+      <canvas id="myChart3" height="100"></canvas> 
+    </div>
+    <div class="col-1">
+      <canvas id="myChart4" height="100"></canvas> 
+    </div>       
+  </div>
+</div>
+</body>
+
+<div id="donate" class="container">
+  <h2 class="text-center" ><strong>DEFORESTATION IS RISING. STOP THE TREND. DONATE TODAY.</strong></h2>
+  <div class="row text-center slideanim">
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="nff.png" alt="NFF" width="400" height="300">
+        <button type="button" onclick="location.href='https://support.nationalforests.org/give/298614/#!/donation/checkout?c_src=WEB&c_src2=UNR0000WEBOrangeSupport'">
+        <p><strong>National Forest Foundation</strong></p>
+        <p>Plants trees, restore watersheds, and protect crucial habitats.</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="aff.jpg" alt="AFF" width="400" height="300">
+        <button type="button" onclick="location.href='https://www.forestfoundation.org/how-we-do-it/philanthropy-and-giving/donate-online'">
+        <p><strong>American Forest Foundation</strong></p>
+        <p>Develops innovative solutions and partnerships around carbon sequestration, wildfire reduction, wildlife protection, clean water, sustainable wood supplies and support for rural communities.</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="onetreeplanted.png" alt="onetreeplanted" width="400" height="300">
+        <button type="button" onclick="location.href='https://onetreeplanted.org/products/plant-trees'">
+        <p><strong>OneTreePlanted</strong></p>
+        <p>Non-for-profit focused on restoring global forests by planting trees.</p>
+      </div>
+    </div><br>
+</div>
+
+<div id="contact" class="jumbotron text-center">
+  <h1>Contact Us</h1> 
+  <div class="row text-center slideanim">
+    <div class="col-sm-6">
+      <div class="thumbnail">
+        <img src="https://cdn.discordapp.com/attachments/332740194912436235/894726552019939338/image0.jpg" alt="Bryan" width="400" height="300">
+        <p><strong>Bryan</strong></p>
+        <h5>chan407835@student.aisd.net</h5>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="thumbnail">
+        <img src="https://cdn.discordapp.com/attachments/332740194912436235/894726552707797063/image1.jpg" alt="Ali" width="400" height="300">
+        <p><strong>Ali</strong></p>
+        <h5>afrid417909@student.aisd.net</h5>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+<script>
+var myData = {
+    "1988": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3723520,
+      "Annual forest loss (km2)": 21050,
+      "Percent of 1970 cover remaining": 0.908,
+      "Total forest loss since 1970 (km2)": 376480
+    },
+  
+  
+    "1989": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3705750,
+      "Annual forest loss (km2)": 17770,
+      "Percent of 1970 cover remaining": 0.904,
+      "Total forest loss since 1970 (km2)": 394250
+    },
+  
+  
+    "1990": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3692020,
+      "Annual forest loss (km2)": 13730,
+      "Percent of 1970 cover remaining": 0.9,
+      "Total forest loss since 1970 (km2)": 407980
+    },
+  
+  
+    "1991": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3680990,
+      "Annual forest loss (km2)": 11030,
+      "Percent of 1970 cover remaining": 0.898,
+      "Total forest loss since 1970 (km2)": 419010
+    },
+  
+  
+    "1992": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3667204,
+      "Annual forest loss (km2)": 13786,
+      "Percent of 1970 cover remaining": 0.894,
+      "Total forest loss since 1970 (km2)": 432796
+    },
+  
+  
+    "1993": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3652308,
+      "Annual forest loss (km2)": 14896,
+      "Percent of 1970 cover remaining": 0.891,
+      "Total forest loss since 1970 (km2)": 447692
+    },
+  
+  
+    "1994": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3637412,
+      "Annual forest loss (km2)": 14896,
+      "Percent of 1970 cover remaining": 0.887,
+      "Total forest loss since 1970 (km2)": 462588
+    },
+  
+
+    "1995": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3608353,
+      "Annual forest loss (km2)": 29059,
+      "Percent of 1970 cover remaining": 0.88,
+      "Total forest loss since 1970 (km2)": 491647
+    },
+  
+  
+    "1996": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3590192,
+      "Annual forest loss (km2)": 18161,
+      "Percent of 1970 cover remaining": 0.876,
+      "Total forest loss since 1970 (km2)": 509808
+    },
+  
+
+    "1997": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3576965,
+      "Annual forest loss (km2)": 13227,
+      "Percent of 1970 cover remaining": 0.872,
+      "Total forest loss since 1970 (km2)": 523035
+    },
+  
+  
+    "1998": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3559582,
+      "Annual forest loss (km2)": 17383,
+      "Percent of 1970 cover remaining": 0.868,
+      "Total forest loss since 1970 (km2)": 540418
+    },
+  
+  
+    "1999": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3542323,
+      "Annual forest loss (km2)": 17259,
+      "Percent of 1970 cover remaining": 0.864,
+      "Total forest loss since 1970 (km2)": 557677
+    },
+  
+  
+    "2000": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3524097,
+      "Annual forest loss (km2)": 18226,
+      "Percent of 1970 cover remaining": 0.86,
+      "Total forest loss since 1970 (km2)": 575903
+    },
+  
+  
+    "2001": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3505932,
+      "Annual forest loss (km2)": 18165,
+      "Percent of 1970 cover remaining": 0.855,
+      "Total forest loss since 1970 (km2)": 594068
+    },
+  
+  
+    "2002": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3484281,
+      "Annual forest loss (km2)": 21651,
+      "Percent of 1970 cover remaining": 0.85,
+      "Total forest loss since 1970 (km2)": 615719
+    },
+  
+  
+    "2003": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3458885,
+      "Annual forest loss (km2)": 25396,
+      "Percent of 1970 cover remaining": 0.844,
+      "Total forest loss since 1970 (km2)": 641115
+    },
+  
+  
+    "2004": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3431113,
+      "Annual forest loss (km2)": 27772,
+      "Percent of 1970 cover remaining": 0.837,
+      "Total forest loss since 1970 (km2)": 668887
+    },
+  
+  
+    "2005": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3412099,
+      "Annual forest loss (km2)": 19014,
+      "Percent of 1970 cover remaining": 0.832,
+      "Total forest loss since 1970 (km2)": 687901
+    },
+  
+  
+    "2006": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3397814,
+      "Annual forest loss (km2)": 14285,
+      "Percent of 1970 cover remaining": 0.829,
+      "Total forest loss since 1970 (km2)": 702186
+    },
+  
+  
+    "2007": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3386163,
+      "Annual forest loss (km2)": 11651,
+      "Percent of 1970 cover remaining": 0.826,
+      "Total forest loss since 1970 (km2)": 713837
+    },
+  
+  
+    "2008": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3373252,
+      "Annual forest loss (km2)": 12911,
+      "Percent of 1970 cover remaining": 0.823,
+      "Total forest loss since 1970 (km2)": 726748
+    },
+  
+  
+    "2009": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3365788,
+      "Annual forest loss (km2)": 7464,
+      "Percent of 1970 cover remaining": 0.821,
+      "Total forest loss since 1970 (km2)": 734212
+    },
+  
+  
+    "2010": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3358788,
+      "Annual forest loss (km2)": 7000,
+      "Percent of 1970 cover remaining": 0.819,
+      "Total forest loss since 1970 (km2)": 741212
+    },
+  
+  
+    "2011": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3352370,
+      "Annual forest loss (km2)": 6418,
+      "Percent of 1970 cover remaining": 0.818,
+      "Total forest loss since 1970 (km2)": 747630
+    },
+  
+  
+    "2012": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3347799,
+      "Annual forest loss (km2)": 4571,
+      "Percent of 1970 cover remaining": 0.817,
+      "Total forest loss since 1970 (km2)": 752201
+    },
+  
+  
+    "2013": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3341908,
+      "Annual forest loss (km2)": 5891,
+      "Percent of 1970 cover remaining": 0.815,
+      "Total forest loss since 1970 (km2)": 758092
+    },
+  
+  
+    "2014": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3336896,
+      "Annual forest loss (km2)": 5012,
+      "Percent of 1970 cover remaining": 0.814,
+      "Total forest loss since 1970 (km2)": 763104
+    },
+  
+  
+    "2015": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3330689,
+      "Annual forest loss (km2)": 6207,
+      "Percent of 1970 cover remaining": 0.812,
+      "Total forest loss since 1970 (km2)": 769311
+    },
+  
+  
+    "2016": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3322796,
+      "Annual forest loss (km2)": 7893,
+      "Percent of 1970 cover remaining": 0.81,
+      "Total forest loss since 1970 (km2)": 777204
+    },
+  
+  
+    "2017": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3315849,
+      "Annual forest loss (km2)": 6947,
+      "Percent of 1970 cover remaining": 0.809,
+      "Total forest loss since 1970 (km2)": 784151
+    },
+  
+  
+    "2018": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3308313,
+      "Annual forest loss (km2)": 7536,
+      "Percent of 1970 cover remaining": 0.807,
+      "Total forest loss since 1970 (km2)": 791687
+    },
+  
+  
+    "2019": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3298551,
+      "Annual forest loss (km2)": 9762,
+      "Percent of 1970 cover remaining": 0.805,
+      "Total forest loss since 1970 (km2)": 801449
+    },
+  
+  
+    "2020": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3290125,
+      "Annual forest loss (km2)": 8426,
+      "Percent of 1970 cover remaining": 0.803,
+      "Total forest loss since 1970 (km2)": 809875
+    },
+  
+  
+    "2021": {
+      "Estimated remaining forest cover in the Brazilian Amazon (km2)": 3279649,
+      "Annual forest loss (km2)": 10476,
+      "Percent of 1970 cover remaining": 0.801,
+      "Total forest loss since 1970 (km2)": 820351
+    },
+}
+  
+  
+var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: Object.keys(myData),
+      datasets: [{
+        label: 'Square Kilometers of Forest Remaining', 
+        data: Object.values(myData).map(element => (element["Estimated remaining forest cover in the Brazilian Amazon (km2)"])),
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderWidth: 1
+      }
+      ]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks:{
+          }
+        }]
+      }
+    }
+  });
+var ctx2 = document.getElementById("myChart2");
+var myChart2 = new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: Object.keys(myData),
+      datasets: [{
+        label: 'Percentage of trees left compared to 1970', 
+        data: Object.values(myData).map(element => (element["Percent of 1970 cover remaining"])),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks:{
+          }
+        }]
+      }
+    }
+  });
+var ctx3 = document.getElementById("myChart3");
+var myChart3 = new Chart(ctx3, {
+    type: 'line',
+    data: {
+      labels: Object.keys(myData),
+      datasets: [{
+        label: 'Total forest loss since 1970 in square kilometers', 
+        data: Object.values(myData).map(element => (element["Total forest loss since 1970 (km2)"])),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks:{
+          }
+        }]
+      }
+    }
+  });
+var ctx4 = document.getElementById("myChart4");
+var myChart4 = new Chart(ctx4, {
+    type: 'line',
+    data: {
+      labels: Object.keys(myData),
+      datasets: [{
+        label: 'Annual forest loss in square kilometers', 
+        data: Object.values(myData).map(element => (element["Annual forest loss (km2)"])),
+        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks:{
+          }
+        }]
+      }
+    }
+  });
+</script>
+<script>
+  var stat1 = document.getElementById("stat1");
+
+  var stat1time = setInterval(function() {
+    var countDownDate = new Date("Jan 1, 2020 00:00:00").getTime();
+    var now = new Date().getTime();
+    var differenceAcres = Math.round(Math.abs(now - countDownDate) * 0.073638/ 1000);
+    stat1.innerHTML = differenceAcres.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");;
+  }, 1000);
+  
+
+</script>
+
+</html>
